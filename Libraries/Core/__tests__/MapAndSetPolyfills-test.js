@@ -14,8 +14,8 @@ const {freeze, seal, preventExtensions} = Object;
 
 function setup() {
   jest.setMock('../../vendor/core/_shouldPolyfillES6Collection', () => true);
-  jest.unmock('_wrapObjectFreezeAndFriends');
-  require('_wrapObjectFreezeAndFriends');
+  jest.unmock('../../vendor/core/_wrapObjectFreezeAndFriends');
+  require('../../vendor/core/_wrapObjectFreezeAndFriends');
 }
 
 function cleanup() {
@@ -25,7 +25,7 @@ function cleanup() {
 describe('Map polyfill', () => {
   setup();
 
-  const Map = require('Map');
+  const Map = require('../../vendor/core/Map');
 
   it('is not native', () => {
     const getCode = Function.prototype.toString.call(Map.prototype.get);
@@ -65,7 +65,7 @@ describe('Map polyfill', () => {
 describe('Set polyfill', () => {
   setup();
 
-  const Set = require('Set');
+  const Set = require('../../vendor/core/Set');
 
   it('is not native', () => {
     const addCode = Function.prototype.toString.call(Set.prototype.add);
